@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MÉDIA ARITMÉTICA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: black;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+    h1 {
+        display: grid;
+        place-items: center;
+    }
+        form {
+            display: grid;
+            place-items: center;
+            gap: 2rem;
+        }
+
+        button {
+            padding: 1rem;
+            border: 1px solid black;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition-duration: 0.2s
+        }
+
+        button:hover {
+            color: white;
+            background: black;
+            border: 1px solid white;
+        }
+
+        button:active {
+            transform: scaleX(1.1);
+        }
+
+        input {
+          display: block;
+            height: 2rem;
+            margin-top: 1rem;
+            width: 20rem;
+            border-radius: 5px;
+        }
+
+        div {
+          font-weight: bold;
+          color: white;
+        }
+
+        .bg {
+          position: absolute;
+            top: 30%;
+            right: 5rem;
+            left: 5rem;
+            width: 10%;
+            z-index: -1;
+        }
+
+        @media screen and (max-width: 670px) {
+            .bg {
+                display: none;
+            }
+        }
+        
+    </style>
+    <form onsubmit="return false">
+
+      <h1>MÉDIA ARITMÉTICA</h1>
+
+            <label>Informe sua primeira nota: <input type="text" name="media" id="media1" for="media" placeholder="Exemplo 9.7" required></label>
+
+            <label>Informe sua segunda nota: <input type="text" name="media" id="media2" for="media" placeholder="Exemplo: 7.3" required></label>
+
+            <label>Informe sua primeira nota: <input type="text" name="media" id="media3" for="media" placeholder="Exemplo 5.5" required></label>
+
+            <label>Informe sua segunda nota: <input type="text" name="media" id="media4" for="media" placeholder="Exemplo: 10" required></label>
+
+            <button type="submit" id="btn" for="media">CALCULAR MÉDIA</button>
+
+            <div id="resultado"></div>
+
+            <img src="./ifpi-removebg-preview.png" alt="IFPI" class="bg">
+    </form>
+
+    
+    
+    <script>
+        
+        let btn = document.getElementById('btn')
+        let resultado = document.getElementById('resultado')
+
+    btn.addEventListener('click', function() {
+
+        let media1 = parseFloat(document.getElementById('media1').value)
+        let media2 = parseFloat(document.getElementById('media2').value)
+        let media3 = parseFloat(document.getElementById('media3').value)
+        let media4 = parseFloat(document.getElementById('media4').value)
+
+        let media = (media1 + media2 + media3 + media4) / 4
+
+        if (media1 >= 0 && media1 <= 10 && media2 >= 0 && media2 <= 10 && media3 >= 0 && media3 <= 10 && media4 >= 0 && media4 <= 10) {
+          if (media >= 7) {
+            resultado.style.color = 'green'
+            resultado.innerHTML = `<p>Sua média é ${media.toFixed(2)}</p>
+            <p>Parabéns! Você foi aprovado!</p>`
+        } else {
+            resultado.style.color = 'red'
+            resultado.innerHTML = (`<p>Sua média é: ${media}</p> <p>Você foi reprovado...</p>`)
+            }
+        }
+        else {
+          alert(`Digite uma nota válida. (de 0 a 10`)
+        }
+        
+        
+    })
+</script>
+</body>
+</html>
